@@ -25,9 +25,29 @@ module.exports = {
         },
         goerli: {
             chainId: 5,
-            blockConfirmations: 6,
             url: GOERLI_RPC_URL,
-            accounts: [PRIVATE_KEY],
+            accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
+            saveDeployments: true,
+        },
+        // mainnet: {
+        //     url: MAINNET_RPC_URL,
+        //     accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
+        //     //   accounts: {
+        //     //     mnemonic: MNEMONIC,
+        //     //   },
+        //     saveDeployments: true,
+        //     chainId: 1,
+        // },
+        // polygon: {
+        //     url: POLYGON_MAINNET_RPC_URL,
+        //     accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
+        //     saveDeployments: true,
+        //     chainId: 137,
+        // },
+    },
+    etherscan: {
+        apiKey: {
+            goerli: ETHERSCAN_API_KEY,
         },
     },
     gasReporter: {
@@ -36,10 +56,24 @@ module.exports = {
         outputFile: "gas-report.txt",
         noColors: true,
     },
-    solidity: "0.8.7",
+    contractSizer: {
+        runOnCompile: false,
+        only: ["Raffle"],
+    },
+    solidity: {
+        compilers: [
+            {
+                version: "0.8.7",
+            },
+            {
+                version: "0.4.24",
+            },
+        ],
+    },
     namedAccounts: {
         deployer: {
             default: 0,
+            1: 0,
         },
         player: {
             default: 1,

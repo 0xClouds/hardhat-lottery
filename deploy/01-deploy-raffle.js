@@ -49,7 +49,7 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
     // Will verify if deployed to testnet or mainnet
     if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
         log("Verifying...")
-        await verify(raffle.address, args)
+        await verify(raffle.address, arguements)
     }
 
     log("-----------------------------------")
