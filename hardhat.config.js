@@ -13,8 +13,9 @@ const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL
 const PRIVATE_KEY = process.env.PRIVATE_KEY
 const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY
+const ARBITRUM_RPC_URL = process.env.ARBITRUM_RPC_URL
 module.exports = {
-    defaultNetwork: "hardhat",
+    defaultNetwork: "goerli",
     networks: {
         hardhat: {
             chainId: 31337,
@@ -28,6 +29,11 @@ module.exports = {
             url: GOERLI_RPC_URL,
             accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
             saveDeployments: true,
+        },
+        arbitrum: {
+            chainId: 42161,
+            url: ARBITRUM_RPC_URL,
+            accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
         },
         // mainnet: {
         //     url: MAINNET_RPC_URL,
